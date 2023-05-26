@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A circuit breaker implementation by disco team",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc --build --verbose"
   },
   "author": "discovery@accretivetg.com",
   "license": "MIT",

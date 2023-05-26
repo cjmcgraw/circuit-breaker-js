@@ -122,7 +122,7 @@ describe("CircuitBreaker", () => {
                     }
 
                     if (i % 10 == 0 && i > 0) {
-                        // ((9 * 100 + 1) * 1000) - (8 * 100 * 999) = 1800
+                        // ((9 * 10 + 1) * 1000) - (8 * 10 * 999) = 1080
                         circuitBreaker.addSuccess({timings: 1080 - 1});
                         expect(circuitBreaker.active()).toBeFalsy();
                     }
