@@ -54,7 +54,7 @@ async function handleRequest(ctx => {
 Experimentally you can try passing a promise that will be managed via exceptions
 
 ```javascript
-const CircuitBreaker from 'circuit-breaker';
+import CircuitBreaker from 'circuit-breaker';
 const breaks = new CircuitBreaker({name: "my-brakes"}).run;
 
 async function handleRequest(ctx => { 
@@ -67,4 +67,16 @@ async function handleRequest(ctx => {
   });
 });
 
+```
+
+or using it with a known stinky library/function call
+
+```javascript
+import CircuitBreaker from 'circuit-breaker';
+const breaks = new CircuitBreaker({name: "my-brakes"});
+
+async function handleRequest(ctx => {
+  const result = brakes(() => callStinkyBoi(...))
+    .catch(...);
+})
 ```
