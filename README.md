@@ -22,3 +22,30 @@ designed to resolve issues when you hit them.
 ```
 npm install 
 ```
+
+```
+import CircutBreaker from 'circuit-breaker';
+
+const breaks = new CircuitBreaker();
+
+async function handleRequest(ctx => {
+   if (brakes.active()) {
+     ctx.status = 429;
+     return;
+   }
+  
+   const start = Date.now();
+   /**
+    * Do work
+    */
+   
+   if (success) {
+     brakes.addSuccess({timing: Date.now() - start});
+   } else {
+     brakes.addError({timing: Date.now() - start});
+   }
+   
+   // continue on
+});
+
+```
