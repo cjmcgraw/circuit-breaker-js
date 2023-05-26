@@ -19,14 +19,16 @@ designed to resolve issues when you hit them.
 
 ## How to Use
 
-```
-npm install 
+```bash
+$ npm install 
 ```
 
-```
+Then you can build the circuit breaker into module state for your component and operate
+it on this way in a koa-esque paradigm.
+
+```javascript
 import CircutBreaker from 'circuit-breaker';
-
-const breaks = new CircuitBreaker();
+const breaks = new CircuitBreaker({name: "my-brakes");
 
 async function handleRequest(ctx => {
    if (brakes.active()) {
@@ -46,6 +48,23 @@ async function handleRequest(ctx => {
    }
    
    // continue on
+});
+```
+
+Experimentally you can try passing a promise that will be managed via exceptions
+
+```javascript
+const CircuitBreaker from 'circuit-breaker';
+const breaks = new CircuitBreaker({name: "my-brakes"}).run;
+
+async function handleRequest(ctx => { 
+  brakes(() => {
+      /**
+       * Do work. Exceptions recorded as errors
+       */
+  }).catch(e => {
+    ctx.status = e?.statusCode ?? 500;
+  });
 });
 
 ```
