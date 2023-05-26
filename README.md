@@ -17,6 +17,8 @@ traffic for many other reasons.
 This library provides a no dependencies implementation of a lightweight circuit breaker
 designed to resolve issues when you hit them.
 
+Pure JS. No dependencies.
+
 ## How to Use
 
 ```bash
